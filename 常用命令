@@ -5,3 +5,5 @@ zip -r target.zip soucedir
 2.lsof -i:端口号
 #后台执行命令，即使shell窗口关闭也不停止
 nohup command &
+#查看进程下面的线程
+top -H -p pid

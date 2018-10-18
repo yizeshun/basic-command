@@ -1,0 +1,14 @@
+ps -ef |grep new_feed_consume.py  | grep -v grep | awk '{print $2}' | xargs kill -15
+
+ps -ef | grep new_feed_consume.py
+  找出进程new_feed_consume.py的进程信息
+grep -v grep
+  排除执行这个命令的进程本身
+  因此输出为:bsauser  26449 23739  0 16:29 pts/3    00:00:00 python new_feed_consume.py
+awk '{print $2}'
+  awk默认分隔符为空格键或者tab键，它将
+  前面的输入按分隔符切割
+  '{print $2}' 打印第二个域也就是26449
+  $0代表第0个域，内容为：bsauser  26449 23739  0 16:29 pts/3    00:00:00 python new_feed_consume.py本身
+xargs 将前面的输入作为后面命令的参数
+pid xargs kill -15 也就是执行kill -15 pid
